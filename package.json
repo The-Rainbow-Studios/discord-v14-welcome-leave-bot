@@ -1,0 +1,32 @@
+{
+  "name": "discord-v14-welcome-leave-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/The-Rainbow-Studios/discord-v14-welcome-leave-bot"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/The-Rainbow-Studios/discord-v14-welcome-leave-bot/issues"
+  },
+  "homepage": "https://github.com/The-Rainbow-Studios/discord-v14-welcome-leave-bot#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "cpu-stat": "^2.0.1",
+    "discord.js": "^14.9.0",
+    "dotenv": "^16.0.3",
+    "enmap": "^5.9.5",
+    "mongoose": "^7.0.4",
+    "node-fetch": "^3.3.1",
+    "quick.db": "^9.1.6",
+    "quickmongo": "^5.2.0",
+    "visa2discord": "^1.0.8"
+  }
+}
