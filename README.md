@@ -1,3 +1,4 @@
+![We](https://user-images.githubusercontent.com/73745640/233626591-d9984c34-c3d4-41d5-9cd9-531f5b85744b.png)
 
 
 # Welcomer and Leave Bot
