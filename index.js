@@ -3,6 +3,7 @@ const Discord = require("discord.js");
 const config = require(`./botconfig/config.js`);
 const settings = require(`./botconfig/settings.js`);
 const colors = require("colors");
+
 const client = new Discord.Client({
   fetchAllMembers: false,
   shards: "auto",
@@ -44,7 +45,7 @@ if (config.dbType === "quick.db") {
     async function main() {
       await db.connect();
     }
-client.db = db
+    client.db = db
   } else {
     console.log('Invalid MongoType, only quickmongo Accepted')
     process.exit(1)
@@ -65,14 +66,31 @@ client.maps = new Map();
 
 client.setMaxListeners(100); require('events').defaultMaxListeners = 100;
 
-
 //Require the Handlers Add the antiCrash file too, if its enabled
 ["events", "slashCommands", settings.antiCrash ? "antiCrash" : null]
   .filter(Boolean)
   .forEach(h => {
     require(`./handlers/${h}`)(client);
   })
+
+if (config.expressServer) {
+  const express = require('express');
+  const http = require('http');
+  const app = express();
+
+  // Create an HTTP server using express
+  const server = http.createServer(app);
+  const port = process.env.PORT || 3000;
+  server.listen(port, () => {
+    console.log(`Server is listening on port ${port}`);
+  });
+
+  // Add a route to the express app that responds to requests
+  app.get('/', (req, res) => {
+    res.send('Hello, World!');
+  });
+}
+
 //Start the Bot
 client.login(config.token)
 //End of the File
-
