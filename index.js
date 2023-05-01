@@ -1,8 +1,19 @@
 require('dotenv').config();
+const express = require('express');
+const http = require('http');
 const Discord = require("discord.js");
 const config = require(`./botconfig/config.js`);
 const settings = require(`./botconfig/settings.js`);
 const colors = require("colors");
+const app = express();
+
+// Create an HTTP server using express
+const server = http.createServer(app);
+const port = process.env.PORT || 3000;
+server.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
+});
+
 const client = new Discord.Client({
   fetchAllMembers: false,
   shards: "auto",
@@ -72,7 +83,12 @@ client.setMaxListeners(100); require('events').defaultMaxListeners = 100;
   .forEach(h => {
     require(`./handlers/${h}`)(client);
   })
+
+// Add a route to the express app that responds to requests
+app.get('/', (req, res) => {
+  res.send('Hello, World!');
+});
+
 //Start the Bot
 client.login(config.token)
 //End of the File
-
